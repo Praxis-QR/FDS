@@ -24,8 +24,11 @@ DEFAULT_PEN_WIDTH = 4
 # all 140 color names that modern browsers support. taken from https://www.w3schools.com/colors/colors_names.asp
 VALID_COLORS = ('black', 'navy', 'darkblue', 'mediumblue', 'blue', 'darkgreen', 'green', 'teal', 'darkcyan', 'deepskyblue', 'darkturquoise', 'mediumspringgreen', 'lime', 'springgreen', 'aqua', 'cyan', 'midnightblue', 'dodgerblue', 'lightseagreen', 'forestgreen', 'seagreen', 'darkslategray', 'darkslategrey', 'limegreen', 'mediumseagreen', 'turquoise', 'royalblue', 'steelblue', 'darkslateblue', 'mediumturquoise', 'indigo', 'darkolivegreen', 'cadetblue', 'cornflowerblue', 'rebeccapurple', 'mediumaquamarine', 'dimgray', 'dimgrey', 'slateblue', 'olivedrab', 'slategray', 'slategrey', 'lightslategray', 'lightslategrey', 'mediumslateblue', 'lawngreen', 'chartreuse', 'aquamarine', 'maroon', 'purple', 'olive', 'gray', 'grey', 'skyblue', 'lightskyblue', 'blueviolet', 'darkred', 'darkmagenta', 'saddlebrown', 'darkseagreen', 'lightgreen', 'mediumpurple', 'darkviolet', 'palegreen', 'darkorchid', 'yellowgreen', 'sienna', 'brown', 'darkgray', 'darkgrey', 'lightblue', 'greenyellow', 'paleturquoise', 'lightsteelblue', 'powderblue', 'firebrick', 'darkgoldenrod', 'mediumorchid', 'rosybrown', 'darkkhaki', 'silver', 'mediumvioletred', 'indianred', 'peru', 'chocolate', 'tan', 'lightgray', 'lightgrey', 'thistle', 'orchid', 'goldenrod', 'palevioletred', 'crimson', 'gainsboro', 'plum', 'burlywood', 'lightcyan', 'lavender', 'darksalmon', 'violet', 'palegoldenrod', 'lightcoral', 'khaki', 'aliceblue', 'honeydew', 'azure', 'sandybrown', 'wheat', 'beige', 'whitesmoke', 'mintcream', 'ghostwhite', 'salmon', 'antiquewhite', 'linen', 'lightgoldenrodyellow', 'oldlace', 'red', 'fuchsia', 'magenta', 'deeppink', 'orangered', 'tomato', 'hotpink', 'coral', 'darkorange', 'lightsalmon', 'orange', 'lightpink', 'pink', 'gold', 'peachpuff', 'navajowhite', 'moccasin', 'bisque', 'mistyrose', 'blanchedalmond', 'papayawhip', 'lavenderblush', 'seashell', 'cornsilk', 'lemonchiffon', 'floralwhite', 'snow', 'yellow', 'lightyellow', 'ivory', 'white')
 VALID_COLORS_SET = set(VALID_COLORS)
+# 
+# -------------------------new shapes added
+# 
 DEFAULT_TURTLE_SHAPE = 'turtle'
-VALID_TURTLE_SHAPES = ('turtle', 'circle','arrow','car','f1','monkey','woman')
+VALID_TURTLE_SHAPES = ('turtle', 'circle','arrow','car','f1','monkey','woman', 'sedan')
 SVG_TEMPLATE = """
       <svg width="{window_width}" height="{window_height}">
         <rect width="100%" height="100%" fill="{background_color}"/>
@@ -152,8 +155,56 @@ TURTLE_WOMAN_SVG_TEMPLATE = """
 </g>
 """
 
+TURTLE_SEDAN_SVG_TEMPLATE = """
+<g visibility={visibility}
+   transform="rotate({degrees},{rotation_x},{rotation_y}) translate({turtle_x}, {turtle_y})">
+   <!-- Sedan Top View -->
+   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 358.85 789.36" width="45" height="45">
+     
+     <!-- Wheels -->
+     <rect fill="#60585a" x="16.287" y="623.04" width="27.775" height="78.696" rx="8.58" ry="8.58"/>
+     <rect fill="#60585a" x="311.29" y="613.04" width="27.775" height="78.696" rx="8.58" ry="8.58"/>
+     <rect fill="#60585a" x="318.79" y="98.038" width="27.775" height="78.696" rx="8.58" ry="8.58"/>
+     <rect fill="#60585a" x="8.633"  y="101.12" width="27.775" height="78.696" rx="8.58" ry="8.58"/>
+
+     <!-- Body (blue) -->
+     <path d="M178.73 782.98c-113.07 2.362-130.4-17.92-147.11-21.261-16.705-38.776-19.877-365.73-9.855-392.46
+              7.493-60.54-4.936-70.565-8.687-143.53-7.14-85.213 9.815-37.829-4.439-124.48
+              21.658-90.216-19.136-92.053 168.52-100.63 172.21 2.401 147.96 10.415 169.61 100.63
+              -14.254 86.652 2.701 39.268-4.439 124.48-3.751 72.961-16.18 82.986-8.687 143.53
+              10.022 26.727 6.85 353.68-9.855 392.46-26.153 15.153-95.459 21.261-145.07 21.261z"
+           fill="#1e3a8a" stroke="#000" stroke-width="1"/>
+
+     <!-- Roof (orange) -->
+     <path d="M37.198 44.521c-11.667 18.667-10.816 196.22 7.851 210.22
+              18.03-14.851 122.48-28.646 142.34-27.364
+              20.288-1.492 99.694 8.055 124.09 22.697
+              6.577 2.13 19.727-205.55 1.059-219.55
+              -58.34-16.344-252.01-16.344-275.34 13.99z"
+           fill="#f97316" stroke="#000" stroke-width="1"/>
+
+     <!-- Glass areas -->
+     <!-- Front windshield -->
+     <rect x="90" y="70" width="180" height="80"
+           fill="#93c5fd" fill-opacity="0.7" stroke="black" stroke-width="0.5" rx="10" ry="10"/>
+     <!-- Rear windshield -->
+     <rect x="100" y="640" width="160" height="70"
+           fill="#93c5fd" fill-opacity="0.7" stroke="black" stroke-width="0.5" rx="10" ry="10"/>
+     <!-- Left side windows -->
+     <rect x="55" y="200" width="40" height="300"
+           fill="#93c5fd" fill-opacity="0.7" stroke="black" stroke-width="0.5" rx="6" ry="6"/>
+     <!-- Right side windows -->
+     <rect x="265" y="200" width="40" height="300"
+           fill="#93c5fd" fill-opacity="0.7" stroke="black" stroke-width="0.5" rx="6" ry="6"/>
+
+   </svg>
+</g>
+"""
 
 
+# 
+# -------------------------new shapes end 
+# 
 
 SPEED_TO_SEC_MAP = {1: 1.5, 2: 0.9, 3: 0.7, 4: 0.5, 5: 0.3, 6: 0.18, 7: 0.12, 8: 0.06, 9: 0.04, 10: 0.02, 11: 0.01, 12: 0.001, 13: 0.0001}
 
@@ -238,7 +289,9 @@ def _generateTurtleSvgDrawing():
     elif turtle_shape == 'circle':
         degrees -= 90
         template = TURTLE_CIRCLE_SVG_TEMPLATE
-
+# 
+# -------------------------new shapes added
+# 
     elif turtle_shape == 'arrow':
         degrees += 90
         template = TURTLE_ARROW_SVG_TEMPLATE
@@ -249,6 +302,11 @@ def _generateTurtleSvgDrawing():
     elif turtle_shape == 'f1':
         degrees += 90
         template = TURTLE_F1_SVG_TEMPLATE
+    elif turtle_shape == 'sedan':
+        turtle_x -= 18
+        turtle_y -= 18
+        degrees += 90
+        template = TURTLE_SEDAN_SVG_TEMPLATE
     elif turtle_shape == 'monkey':
         degrees += 90
         template = TURTLE_MONKEY_SVG_TEMPLATE
@@ -257,6 +315,9 @@ def _generateTurtleSvgDrawing():
         turtle_y -= 18
         degrees += 90
         template = TURTLE_WOMAN_SVG_TEMPLATE
+# 
+# -------------------------new shapes end
+# 
     else:
         # fallback in case of typo or unsupported shape
         degrees -= 90
