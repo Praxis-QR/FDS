@@ -25,7 +25,7 @@ DEFAULT_PEN_WIDTH = 4
 VALID_COLORS = ('black', 'navy', 'darkblue', 'mediumblue', 'blue', 'darkgreen', 'green', 'teal', 'darkcyan', 'deepskyblue', 'darkturquoise', 'mediumspringgreen', 'lime', 'springgreen', 'aqua', 'cyan', 'midnightblue', 'dodgerblue', 'lightseagreen', 'forestgreen', 'seagreen', 'darkslategray', 'darkslategrey', 'limegreen', 'mediumseagreen', 'turquoise', 'royalblue', 'steelblue', 'darkslateblue', 'mediumturquoise', 'indigo', 'darkolivegreen', 'cadetblue', 'cornflowerblue', 'rebeccapurple', 'mediumaquamarine', 'dimgray', 'dimgrey', 'slateblue', 'olivedrab', 'slategray', 'slategrey', 'lightslategray', 'lightslategrey', 'mediumslateblue', 'lawngreen', 'chartreuse', 'aquamarine', 'maroon', 'purple', 'olive', 'gray', 'grey', 'skyblue', 'lightskyblue', 'blueviolet', 'darkred', 'darkmagenta', 'saddlebrown', 'darkseagreen', 'lightgreen', 'mediumpurple', 'darkviolet', 'palegreen', 'darkorchid', 'yellowgreen', 'sienna', 'brown', 'darkgray', 'darkgrey', 'lightblue', 'greenyellow', 'paleturquoise', 'lightsteelblue', 'powderblue', 'firebrick', 'darkgoldenrod', 'mediumorchid', 'rosybrown', 'darkkhaki', 'silver', 'mediumvioletred', 'indianred', 'peru', 'chocolate', 'tan', 'lightgray', 'lightgrey', 'thistle', 'orchid', 'goldenrod', 'palevioletred', 'crimson', 'gainsboro', 'plum', 'burlywood', 'lightcyan', 'lavender', 'darksalmon', 'violet', 'palegoldenrod', 'lightcoral', 'khaki', 'aliceblue', 'honeydew', 'azure', 'sandybrown', 'wheat', 'beige', 'whitesmoke', 'mintcream', 'ghostwhite', 'salmon', 'antiquewhite', 'linen', 'lightgoldenrodyellow', 'oldlace', 'red', 'fuchsia', 'magenta', 'deeppink', 'orangered', 'tomato', 'hotpink', 'coral', 'darkorange', 'lightsalmon', 'orange', 'lightpink', 'pink', 'gold', 'peachpuff', 'navajowhite', 'moccasin', 'bisque', 'mistyrose', 'blanchedalmond', 'papayawhip', 'lavenderblush', 'seashell', 'cornsilk', 'lemonchiffon', 'floralwhite', 'snow', 'yellow', 'lightyellow', 'ivory', 'white')
 VALID_COLORS_SET = set(VALID_COLORS)
 DEFAULT_TURTLE_SHAPE = 'turtle'
-VALID_TURTLE_SHAPES = ('turtle', 'circle','arrow','car','f1','monkey')
+VALID_TURTLE_SHAPES = ('turtle', 'circle','arrow','car','f1','monkey','woman')
 SVG_TEMPLATE = """
       <svg width="{window_width}" height="{window_height}">
         <rect width="100%" height="100%" fill="{background_color}"/>
@@ -129,6 +129,29 @@ TURTLE_MONKEY_SVG_TEMPLATE = """
 </g>
 """
 
+TURTLE_WOMAN_SVG_TEMPLATE = """
+<g visibility={visibility}
+   transform="rotate({degrees},{rotation_x},{rotation_y}) translate({turtle_x}, {turtle_y})">
+  <!-- Hair (changed to black) -->
+  <path fill="black" d="M18 3c6 0 16 3 16 16s0 16-3 16-7-3-13-3-9.915 3-13 3c-3.343 0-3-12-3-16C2 6 12 3 18 3z"/>
+  
+  <!-- Face -->
+  <path fill="#FFDC5D" d="M6 18.562c0-8.526 5.373-15.438 12-15.438s12 6.912 12 15.438S24.627 34 18 34 6 27.088 6 18.562z"/>
+  
+  <!-- Mouth -->
+  <path fill="#DF1F32" d="M18 30c-2.347 0-3.575-1.16-3.707-1.293-.391-.391-.391-1.023 0-1.414.387-.387 1.013-.39 1.404-.01.051.047.806.717 2.303.717 1.519 0 2.273-.69 2.305-.719.398-.373 1.027-.362 1.408.029.379.393.38 1.011-.006 1.397C21.575 28.84 20.347 30 18 30z"/>
+  
+  <!-- Nose -->
+  <path fill="#C1694F" d="M19 25h-2c-.552 0-1-.447-1-1s.448-1 1-1h2c.553 0 1 .447 1 1s-.447 1-1 1z"/>
+  
+  <!-- Hair top shading (changed to black) -->
+  <path fill="black" d="M3.064 24c-.03-.325-.064-.647-.064-1 0-5 3 .562 3-3 0-3.563 2-4 4-6l3-3s5 3 9 3 8 2 8 6 3-2 3 3c0 .355-.033.673-.058 1h1.049C34 22.523 34 20.868 34 19 34 6 24 1 18 1S2 6 2 19c0 1.158-.028 2.986.012 5h1.052z"/>
+  
+  <!-- Eyes -->
+  <path d="M13 22c-.552 0-1-.447-1-1v-2c0-.552.448-1 1-1s1 .448 1 1v2c0 .553-.448 1-1 1zm10 0c-.553 0-1-.447-1-1v-2c0-.552.447-1 1-1s1 .448 1 1v2c0 .553-.447 1-1 1z" fill="#662113"/>
+</g>
+"""
+
 
 
 
@@ -229,6 +252,11 @@ def _generateTurtleSvgDrawing():
     elif turtle_shape == 'monkey':
         degrees += 90
         template = TURTLE_MONKEY_SVG_TEMPLATE
+    elif turtle_shape == 'woman':
+        turtle_x -= 18
+        turtle_y -= 18
+        degrees += 90
+        template = TURTLE_WOMAN_SVG_TEMPLATE
     else:
         # fallback in case of typo or unsupported shape
         degrees -= 90
